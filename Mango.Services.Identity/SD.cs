@@ -8,7 +8,7 @@ namespace Mango.Services.Identity
         public const string Admin = "Admin";
         public const string Customer = "Customer";
 
-        public static IEnumerable<IdentityResource> IdentityResource => new List<IdentityResource>
+        public static IEnumerable<IdentityResource> IdentityResources => new List<IdentityResource>
         {
             new IdentityResources.OpenId(),
             new IdentityResources.Email(),
@@ -37,8 +37,8 @@ namespace Mango.Services.Identity
                 ClientId="mango",
                 ClientSecrets={new Secret("secret".Sha256())},
                 AllowedGrantTypes = GrantTypes.Code,
-                RedirectUris={"https://localhost:44342/signin-oidc"},
-                PostLogoutRedirectUris={"https://localhost:44342/signout-callback-oidc"},
+                RedirectUris={"https://localhost:7129/signin-oidc"}, // URL Server of Mango.Web
+                PostLogoutRedirectUris={"https://localhost:7129/signout-callback-oidc"}, // URL Server of Mango.Web
                 AllowedScopes=new List<string>
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
